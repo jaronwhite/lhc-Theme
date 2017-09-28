@@ -1,0 +1,500 @@
+/*
+Theme Name: Living Hope Church
+Theme URI: http://raingaugemedia.com/wp/themes/lhc
+Author: Jaron White
+Author URI: http://raingaugemedia.com
+Description:  Theme built for Living Hope Church in Colorado Springs, CO.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: clean, modern, custom options, church, church theme
+Text Domain: assembly
+*/
+
+html, body, header, main, footer, nav, nav ul, section, article, div {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    margin: 0;
+    padding: 1em 0;
+}
+
+/**Header**/
+#header {
+    position: relative;
+    width: 100%;
+    min-height: 110vh;
+    color: white;
+    text-align: center;
+    background: slategrey;
+}
+
+#header:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    background: black;
+    z-index: 1;
+}
+
+#header-bg {
+    width: 100%;
+    height: 110vh;
+    position: fixed;
+    z-index: 0;
+}
+
+#header-title-wrap {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+/**Main Nav**/
+#primary {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    padding: 0.5em;
+    text-align: center;
+    background: black;
+    z-index: 100;
+}
+
+#primary.stuck {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+
+#primary ul {
+    display: none;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#primary.open ul {
+    display: flex;
+}
+
+#primary ul li a {
+    color: white;
+    display: block;
+    height: 100%;
+    padding: 1em 0;
+    text-decoration: none;
+    font-size: 26px;
+    line-height: 28px;
+    transition: 0.5s ease;
+}
+
+#primary ul li a:hover {
+    background: white;
+    color: dimgrey;
+}
+
+#primary img {
+    max-width: 100px;
+}
+
+#menu-toggle-wrap {
+    margin: 1em 0;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+#menu-toggle-wrap p {
+    padding: 0.1em;
+}
+
+#hamburglar {
+    position: absolute;
+    width: 1.2em;
+    height: 1.2em;
+    top: 0;
+    left: 100%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#hamburglar span {
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 1.2em;
+    height: 3px;
+    background: white;
+    border-radius: 35%;
+    transition: 0.5s;
+}
+
+#hamburglar span:nth-of-type(1) {
+    top: 0.1em;
+}
+
+#hamburglar span:nth-of-type(2) {
+    top: 0.5em;
+}
+
+#hamburglar span:nth-of-type(3) {
+    top: 0.9em;
+}
+
+#primary.open #hamburglar {
+    transform: rotate(450deg);
+}
+
+#primary.open #hamburglar span:nth-of-type(1) {
+    top: 0.3em;
+    width: 0.7em;
+    transform: rotate(-35deg);
+}
+
+#primary.open #hamburglar span:nth-of-type(3) {
+    top: 0.7em;
+    width: 0.7em;
+    transform: rotate(35deg);
+}
+
+/**Main Content**/
+#main-content {
+    position: relative;
+    z-index: 3;
+    background: white;
+}
+
+.content-section {
+    padding: 2% 2% 0;
+}
+
+.section-title {
+    font-size: 3.75em;
+    line-height: 1em;
+    letter-spacing: 5px;
+    padding-bottom: 39px;
+    position: relative;
+    margin: 0 0 60px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-title.lhc-front-title {
+    padding-top: 2em;
+}
+
+.section-title:before {
+    border-bottom: 3px solid #222323;
+    width: 170px;
+    height: 3px;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: -2px;
+    left: 50%;
+    margin: 0 0 0 -85px;
+}
+
+.section-title:after {
+    border-bottom: 1px solid #e8e9e9;
+    width: 100%;
+    height: 1px;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/**Portfolio shortcode**/
+.wide-article {
+    width: 104%;
+    margin-left: -2%;
+}
+
+#portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.portfolio {
+    position: relative;
+    flex-grow: 1;
+    min-height: 265px;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.portfolio:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: .85;
+    background: white;
+    transition: .5s ease;
+}
+
+.portfolio-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2);
+    transition: .5s ease;
+}
+
+.portfolio-content-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    min-width: 60%;
+    max-width: 95%;
+    padding: 1em;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.portfolio-content-wrap:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transform: scale(.5);
+    transition: .6s ease;
+}
+
+.portfolio-title {
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+}
+
+.portfolio-desc {
+    padding: 0;
+    font-weight: 300;
+    font-size: 10px;
+    color: grey;
+}
+
+.portfolio:hover .portfolio-content-wrap:after {
+    opacity: .8;
+    transform: scale(1);
+}
+
+.portfolio:hover .portfolio-image {
+    transform: scale(1);
+}
+
+.portfolio:hover:after {
+    opacity: 0;
+}
+
+/**Services shortcode**/
+#services {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-post {
+    text-align: center;
+    overflow: hidden;
+}
+
+.service-content-wrap {
+    padding: 2em;
+}
+
+.service-image {
+    display: block;
+    width: 106%;
+    height: 340px;
+    transform: translateX(-5%);
+    transition: .5s ease;
+}
+
+.service-post:nth-child(2) .service-image {
+    height: 380px;
+}
+
+.service-post:nth-child(4) .service-image {
+    height: 420px;
+}
+
+.service-image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.service-image:hover {
+    transform: translateX(0%);
+}
+
+.service-image:hover:after {
+    opacity: .8;
+}
+
+.service-desc {
+    color: grey;
+}
+
+.service-page-link {
+    text-decoration: none;
+    color: skyblue;
+    transition: .5s ease;
+}
+
+.service-page-link:hover {
+    color: grey;
+}
+
+#footer {
+    position: relative;
+    z-index: 5;
+    background: rgb(0, 0, 0);
+    color: lightgrey;
+}
+
+#footer img {
+    max-width: 150px;
+}
+
+#sidebar-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgb(70, 70, 70);
+}
+
+#sidebar-bottom .widget {
+    padding: 1em;
+    margin: .5%;
+    flex: 1 1 24%;
+    color: lightgrey;
+}
+
+.widget h3 {
+    text-transform: uppercase;
+    margin: 0 0 .3em;
+}
+
+.widget p {
+    padding: 0;
+}
+
+.widget ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.widget ul li a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+.widget img.image {
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+}
+
+/**MEDIA QUERIES**/
+/*******IPAD******/
+
+@media screen and (min-width: 768px) {
+    #portfolio-container {
+        flex-direction: row;
+    }
+
+    #services {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .service-post {
+        width: 50%;
+    }
+}
+
+/*****DESKTOP*****/
+
+@media screen and (min-width: 1025px) {
+    /**Main Nav**/
+    #primary {
+        left: 50%;
+        width: 95%;
+        transform: translate(-50%, -50%);
+    }
+
+    #primary.stuck {
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, 0%);
+    }
+
+    #primary ul {
+        margin: 3em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #primary.stuck ul {
+        margin: 0 3em;
+    }
+
+    #primary ul li a {
+        display: inline-block;
+        font-size: 26px;
+        line-height: 28px;
+        padding: 16px;
+    }
+
+    #menu-toggle-wrap {
+        display: none;
+    }
+
+    /**Services shortcode**/
+    .service-post {
+        width: 25%;
+    }
+}
