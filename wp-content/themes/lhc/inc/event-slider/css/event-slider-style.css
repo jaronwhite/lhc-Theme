@@ -1,16 +1,84 @@
+/*#event-slider {*/
+    /*position: relative;*/
+    /*min-height: 350px;*/
+/*}*/
+
+/*.event {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background: url("http://localhost/wpdev/wp-content/uploads/2017/09/ales-krivec-3078-2.jpg") no-repeat center;*/
+    /*background-size: cover;*/
+/*}*/
+
+/*.event-content-wrap {*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*color: white;*/
+    /*border: 1px solid white;*/
+    /*min-width: 50%;*/
+    /*max-width: 80%;*/
+    /*text-align: center;*/
+    /*transform: translate(-50%, -50%);*/
+/*}*/
+
+/*.event-title, .event-desc {*/
+    /*margin: 0;*/
+/*}*/
+
+/*.event-title {*/
+    /*font-size: 3em;*/
+/*}*/
+
+/*.event-desc {*/
+    /*font-size: 1.4em;*/
+    /*font-weight: 300;*/
+/*}*/
+
 #event-slider {
     position: relative;
-    min-height: 350px;
+    min-height: 400px;
+    width: 104%;
+    margin-left: -2%;
+    overflow: hidden;
+}
+
+#event-slider-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background: rgb(50,50,50);
 }
 
 .event {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: url("http://localhost/wpdev/wp-content/uploads/2017/09/ales-krivec-3078-2.jpg") no-repeat center;
-    background-size: cover;
+    background: slategrey;
+    z-index: 0;
+    transition: .5s;
+}
+
+.event.active {
+    left: 0%;
+    z-index: 10;
+}
+
+.event.left {
+    left: -101%;
+}
+
+.event.right {
+    left: 101%;
+}
+
+.event.next, .event.prev {
+    z-index: 5;
 }
 
 .event-content-wrap {
@@ -18,14 +86,16 @@
     top: 50%;
     left: 50%;
     color: white;
-    border: 1px solid white;
+    border: 1px solid;
+    padding: 1em;
     min-width: 50%;
     max-width: 80%;
     text-align: center;
     transform: translate(-50%, -50%);
 }
 
-.event-title, .event-desc {
+.event-title,
+.event-desc {
     margin: 0;
 }
 
@@ -36,4 +106,52 @@
 .event-desc {
     font-size: 1.4em;
     font-weight: 300;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    background: rgba(125,125,125,.5);
+    width: 50px;
+    height: 75px;
+    stroke: white;
+    z-index: 100;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#slider-left-arrow {
+    left: .5em;
+}
+
+#slider-right-arrow {
+    right: .5em;
+}
+
+#controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 100;
+    text-align: center;
+}
+
+#controls span {
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: slategrey;
+    margin: 5px 1px;
+    width: 20px;
+    height: 20px;
+    background: darkslategray;
+    cursor: pointer;
+    transition: 1s;
+}
+
+#controls span.active {
+    background: lightslategray;
+    border-color: white;
 }

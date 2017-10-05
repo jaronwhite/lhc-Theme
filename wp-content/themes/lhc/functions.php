@@ -29,9 +29,12 @@ add_action( 'customize_register', array( 'LHC_Customizer', 'customize_theme_opti
 add_shortcode( 'portfolio', array( 'LHC_Shortcodes', 'portfolio' ) );
 add_shortcode( 'services', array( 'LHC_Shortcodes', 'services' ) );
 add_shortcode( 'gallery', array( 'LHC_Shortcodes', 'gallery' ) );
-add_shortcode( 'EvtSlider', array( 'LHC_Shortcodes', 'event_slider_shortcode' ) );
 
 //Event Slider Plugin
+include( 'inc/event-slider/EventSlider.php' );
+include( 'inc/event-slider/EventSliderShortcode.php' );
+$evtSldr = new EventSlider();
+$evtSldr->init();
 
 //Register and add nav menus
 register_nav_menus( array(

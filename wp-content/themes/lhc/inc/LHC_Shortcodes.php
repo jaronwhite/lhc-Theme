@@ -64,16 +64,4 @@ class LHC_Shortcodes {
 
 		return $stuff;
 	}
-
-	//Event Slider -- should be added to plugins folder
-	function event_slider_shortcode() {
-		return '<article id="event-slider" class="wide-article">
-            <div class="event">
-                <div class="event-content-wrap">
-                    <h2 class="event-title">Event Title</h2>
-                    <p class="event-desc">Event description. <br/>October 1, 2017 @ 5:00PM</p>
-                </div>
-            </div>
-        </article>';
-	}
 }

@@ -1,11 +1,15 @@
 <?php
+include( 'EventReader.php' );
 
 class EventSliderShortcode {
-	//Produces the slider with shortcode [EvtSlider]
-	function event_slider_shortcode( $atts ) {
-		$a     = shortcode_atts( array(), $atts );
 
+	public function event_slider_shortcode() {
 
-		return "Event Slider";
+		$er = new EventReader();
+		$t  = $er->readFile( "event-slider-events.json" );
+		print_r( sizeof( $t->events ) );
+
+		return $er->buildSlider();
 	}
+
 }

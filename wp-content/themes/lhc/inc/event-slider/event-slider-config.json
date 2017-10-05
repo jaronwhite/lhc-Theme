@@ -1,0 +1,9 @@
+{
+  "duration": 3500,
+  "restart": true,
+  "controls": {
+    "lr": true,
+    "select": true
+  },
+  "color": "#ffffff"
+}

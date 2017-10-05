@@ -12,7 +12,10 @@
 <body>
 
 <header id="header">
-    <div id="header-bg" style="background: url('<?php echo get_header_image(); ?>') center no-repeat;background-size: cover;"></div>
+    <div id="header-bg"
+         style="background: url('<?php echo get_header_image(); ?>') center no-repeat;background-size: cover;">
+	    <?php the_custom_header_markup(); ?>
+    </div>
     <div id="header-title-wrap">
         <h1><?php echo get_bloginfo( 'name' ); ?></h1>
         <h3><?php echo get_bloginfo( 'description' ); ?></h3>

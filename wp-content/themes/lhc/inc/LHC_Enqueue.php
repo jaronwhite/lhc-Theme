@@ -7,9 +7,6 @@ class LHC_Enqueue {
 		wp_enqueue_style( 'lhc-style' );
 		wp_register_style( 'google-font', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' );
 		wp_enqueue_style( 'google-font' );
-
-		wp_register_style( 'event-slider', get_template_directory_uri() . '/inc/event-slider/css/event-slider-style.css' );
-		wp_enqueue_style( 'event-slider' );
 	}
 
 //Enqueue Scripts
