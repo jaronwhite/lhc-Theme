@@ -7,7 +7,6 @@ class EventSliderShortcode {
 
 		$er = new EventReader();
 		$t  = $er->readFile( "event-slider-events.json" );
-		print_r( sizeof( $t->events ) );
 
 		return $er->buildSlider();
 	}

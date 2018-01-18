@@ -1,15 +1,4 @@
 (function ($) {
-    var $config = {
-        duration: 3500,
-        restart: true,
-        controls: {
-            lr: true,
-            select: true,
-        },
-        color: '#ffffff'
-    };
-
-    console.log("Entering Neverland");
     (function eventSlider() {
         var $play = null;
         var $stopped = true;
@@ -38,7 +27,7 @@
             $play = setInterval(function () {
                 $activeIndex = getIndex($activeIndex, 1);
                 setActive($activeIndex);
-            }, $config.duration);
+            }, (parseInt($config.duration) * 1000));
         }
 
         function stop() {

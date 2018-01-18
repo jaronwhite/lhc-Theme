@@ -7,14 +7,42 @@
  * Time: 1:33 PM
  */
 class EventReader {
-	public function readFile( $fileName ) {
+	/**
+	 * Reads json file and returns php object or json string
+	 *
+	 * @param $fileName
+	 * @param string $returnType
+	 *
+	 * @return array|bool|mixed|object|string
+	 */
+	public function readFile( $fileName, $returnType = 'php' ) {
 		$filePath    = get_theme_file_path() . '/inc/event-slider/';
 		$fileSize    = filesize( $filePath . $fileName );
 		$file        = fopen( $filePath . $fileName, "r" );
 		$fileContent = fread( $file, $fileSize );
 		fclose( $file );
 
-		return json_decode( $fileContent );
+		if ( $returnType != 'json' ) {
+			return json_decode( $fileContent );
+		}
+
+		return $fileContent;
+	}
+
+	/**
+	 *
+	 * @param $fileName the name of the file to be written to
+	 * @param $wContent the string to be appended to the $fileName
+	 */
+	public function writeToFile( $fileName, $wContent ) {
+		$filePath = get_theme_file_path() . '/inc/event-slider/';
+		$fileSize = filesize( $filePath . $fileName );
+		$file     = fopen( $filePath . $fileName, "r+" );
+		fseek( $file, - 1, SEEK_END );
+		fwrite( $file, $wContent );
+		fclose( $file );
+
+//		return json_decode( $fileContent );
 	}
 
 	public function buildSlider() {
@@ -22,7 +50,7 @@ class EventReader {
 		$settings     = $this->readFile( "event-slider-config.json" );
 		$eventDetails = $this->readFile( "event-slider-events.json" );
 
-		$eventCount = sizeof( $eventDetails->events );
+		$eventCount = sizeof( $eventDetails );
 
 		$sliderOpen   = '<article id="event-slider" class="wide-article">'
 		                . '<div id="event-slider-bg"></div>';
@@ -35,7 +63,10 @@ class EventReader {
 		                . '</svg>';
 		$spanEls      = '';
 		for ( $i = 0; $i < $eventCount; $i ++ ) {
-			$event = $eventDetails->events[ $i ];
+			$event    = $eventDetails[ $i ];
+			$dateTime = DateTime::createFromFormat( 'YmdhiA', $event->dateTime );
+			$date     = $dateTime->format( 'F d, Y' );
+			$time     = $dateTime->format( 'h:iA' );
 
 			$sliderEvents .= '<div class="event" style="background: url('
 			                 . $event->image
@@ -45,12 +76,12 @@ class EventReader {
 			                 . $event->title
 			                 . '</h2>'
 			                 . '<p class="event-desc">' . $event->description
-			                 . " <br/>{$event->datetime->month} 1, 2017 @ 7:00PM</p>"
+			                 . " <br/>{$date} @ {$time}</p>"
 			                 . '</div>'
 			                 . '</div>';
 			$spanEls      .= '<span></span>';
 		}
-		echo htmlspecialchars( $sliderEvents );
+
 		$sliderControls = '<div id="controls">'
 		                  . $spanEls
 		                  . '</div>';
@@ -61,8 +92,8 @@ class EventReader {
 			if ( $settings->controls->lr ) {
 				$slider .= $sliderArrows;
 			}
-			if ( $settings->controls->select ) {
-				$slider .= $sliderArrows;
+			if ( $settings->controls->sel ) {
+				$slider .= $sliderControls;
 			}
 		}
 		$slider .= $sliderClose;
@@ -71,8 +102,13 @@ class EventReader {
 	}
 
 	public function head() {
+		$t = new EventReader();
+		$e = $t->readFile( "event-slider-events.json", "json" );
+		$c = $t->readFile( "event-slider-config.json", "json" );
 		echo '<script>'
 		     . 'console.log("Header Testing Occurred!");'
-		     . '</script>';
+		     . 'var $config = ' . $c . ';'
+		     . 'var $events = ' . $e . ';'
+		     . '</script >';
 	}
 }

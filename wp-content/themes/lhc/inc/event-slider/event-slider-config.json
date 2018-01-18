@@ -1,9 +1,1 @@
-{
-  "duration": 3500,
-  "restart": true,
-  "controls": {
-    "lr": true,
-    "select": true
-  },
-  "color": "#ffffff"
-}
+{"duration":"4","restart":false,"controls":{"lr":true,"sel":true}}
